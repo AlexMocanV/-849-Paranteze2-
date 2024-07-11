@@ -1,0 +1,23 @@
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <stack>
+std::string nume="paranteze2";
+std::ifstream fin(nume+".in");
+std::ofstream fout(nume+".out");
+std::stack<char>pardesc;
+std::string n;
+int main()
+{
+    fin>>n;
+
+    int maxi=0;
+    for(int i=0;i<n.length();i++)
+    {
+        if(n[i]=='(')pardesc.push('(');
+        else pardesc.pop();
+        int mar=pardesc.size();
+        maxi=std::max(maxi,mar);
+    }
+    fout<<maxi;
+}
